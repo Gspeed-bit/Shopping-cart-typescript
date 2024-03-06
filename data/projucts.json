@@ -1,0 +1,29 @@
+{
+  "products": [
+    {
+      "itemNumber": "0001",
+      "name": "Smartphone",
+      "price": 1599.99
+    },
+    {
+      "itemNumber": "0002",
+      "name": "Laptop",
+      "price": 2199.99
+    },
+    {
+      "itemNumber": "0003",
+      "name": "Headphones",
+      "price": 539.99
+    },
+    {
+      "itemNumber": "0004",
+      "name": "Smartwatch",
+      "price": 599.99
+    },
+    {
+      "itemNumber": "0005",
+      "name": "Tablet",
+      "price": 1599.99
+    }
+  ]
+}
