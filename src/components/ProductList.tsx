@@ -11,7 +11,7 @@ const ProductList = () => {
 let pageContent: ReactElement | ReactElement[] = <p>Loading...</p>
   if (products?.length) {
     pageContent = products.map(product => {
-      const inCart: boolean = cart.some((item) => item.itemNumber === product.sku);
+      const inCart: boolean = cart.some((item) => item.itemNumber === product.itemNumber);
 
       return (
         <Product

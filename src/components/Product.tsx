@@ -38,7 +38,9 @@ const Product = ({
         }).format(product.price)}
         {itemInCart}
       </p>
-      <button onClick={onAddToCart}>Add to Cart</button>
+      <button className="styled-button" onClick={onAddToCart}>
+        Add to Cart
+      </button>
     </article>
   );
 

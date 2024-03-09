@@ -17,7 +17,7 @@ const initState: productType[] = [
   },
   {
     itemNumber: "0002",
-    name: "Laptop",
+    name: "MacBook Laptop",
     price: 2199.99,
   },
   {
@@ -32,7 +32,7 @@ const initState: productType[] = [
   },
   {
     itemNumber: "0005",
-    name: "Tablet",
+    name: "Samsung Tablet",
     price: 1599.99,
   },
 ];

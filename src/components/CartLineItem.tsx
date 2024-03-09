@@ -10,7 +10,7 @@ type PropsType = {
 };
 
 const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
-  const img: string = new URL(`../images/${item.itemNumber}.jpg`, import.meta.url)
+  const img: string = new URL(`../images/${item.itemNumber}.png`, import.meta.url)
     .href;
 
   const lineTotal: number = item.qty * item.price;
@@ -45,6 +45,8 @@ const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
   const content = (
     <li className="cart__item">
       <img src={img} alt={item.name} className="cart__img" />
+      <div className="cart-subContainer">
+
       <div aria-label="Item Name">{item.name}</div>
       <div aria-label="Price Per Item">
         {new Intl.NumberFormat("en-US", {
@@ -54,7 +56,7 @@ const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
       </div>
 
       <label htmlFor="itemQty" className="offscreen">
-        Item Quantity
+        Item Quantity 
       </label>
       <select
         name="itemQty"
@@ -63,14 +65,14 @@ const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
         value={item.qty}
         aria-label="Item Quantity"
         onChange={onChangeQty}
-      >
+        >
         {options}
       </select>
 
       <div className="cart__item-subtotal" aria-label="Line Item Subtotal">
         {new Intl.NumberFormat("en-US", {
           style: "currency",
-          currency: "USD",
+          currency: "EUR",
         }).format(lineTotal)}
       </div>
 
@@ -79,9 +81,10 @@ const CartLineItem = ({ item, dispatch, REDUCER_ACTIONS }: PropsType) => {
         aria-label="Remove Item From Cart"
         title="Remove Item From Cart"
         onClick={onRemoveFromCart}
-      >
+        >
         ❌
       </button>
+        </div>
     </li>
   );
 
