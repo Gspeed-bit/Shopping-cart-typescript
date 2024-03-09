@@ -98,6 +98,8 @@ input[type="submit"]:hover {
 }
 .header__content {
   display: flex;
+  border-bottom: solid #4caf50 2px;
+  padding-bottom: 10px;
   justify-content: space-between;
 }
 
@@ -136,7 +138,7 @@ input[type="submit"]:hover {
   min-height: fit-content;
 }
 
-.page_disp {
+.main {
   padding: 10px 20px; /* Adjust padding as needed */
   background-color: #4caf50; /* Set background color */
   color: white; /* Set text color */

@@ -128,7 +128,7 @@ const useCartContext = (initCartState: CartStateType) => {
   }, 0);
 
   // Calculate total price of items in the cart
-  const totalPrice = new Intl.NumberFormat("euro", {
+  const totalPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "EUR",
   }).format(

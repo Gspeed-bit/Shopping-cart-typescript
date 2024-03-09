@@ -1,51 +1,50 @@
+import useCart from "../hooks/useCart";
+import { useState } from "react";
+import CartLineItem from "./CartLineItem";
+
+
 const Cart = () => {
-  return (
+  const [confirm, setConfirm] = useState<boolean>(false);
+  const { dispatch, REDUCER_ACTIONS, totalItems, totalPrice, cart } = useCart();
+
+  const onSubmitOrder = () => {
+    dispatch({ type: REDUCER_ACTIONS.SUBMIT });
+    setConfirm(true);
+  };
+
+  const pageContent = confirm ? (
+    <h2>Thank you for your order.</h2>
+  ) : (
     <>
-      <div className="page_disp">Cart</div>
-      <p>
-        Sure, here's a bunch of text containing approximately 100 words: "The
-        world is a vast and diverse place, filled with an array of cultures,
-        languages, and landscapes. From bustling city streets to serene
-        countryside vistas, each corner of the globe offers its own unique charm
-        and beauty. People from all walks of life come together to create a rich
-        tapestry of experiences and stories. Whether exploring ancient ruins,
-        savoring exotic cuisines, or simply enjoying the company of loved ones,
-        there's always something new and exciting to discover. As we navigate
-        the complexities of modern life, it's important to embrace the wonder
-        and curiosity that surrounds us, making each moment truly special."Sure,
-        here's a bunch of text containing approximately 100 words: "The world is
-        a vast and diverse place, filled with an array of cultures, languages,
-        and landscapes. From bustling city streets to serene countryside vistas,
-        each corner of the globe offers its own unique charm and beauty. People
-        from all walks of life come together to create a rich tapestry of
-        experiences and stories. Whether exploring ancient ruins, savoring
-        exotic cuisines, or simply enjoying the company of loved ones, there's
-        always something new and exciting to discover. As we navigate the
-        complexities of modern life, it's important to embrace the wonder and
-        curiosity that surrounds us, making each moment truly special."Sure,
-        here's a bunch of text containing approximately 100 words: "The world is
-        a vast and diverse place, filled with an array of cultures, languages,
-        and landscapes. From bustling city streets to serene countryside vistas,
-        each corner of the globe offers its own unique charm and beauty. People
-        from all walks of life come together to create a rich tapestry of
-        experiences and stories. Whether exploring ancient ruins, savoring
-        exotic cuisines, or simply enjoying the company of loved ones, there's
-        always something new and exciting to discover. As we navigate the
-        complexities of modern life, it's important to embrace the wonder and
-        curiosity that surrounds us, making each moment truly special."Sure,
-        here's a bunch of text containing approximately 100 words: "The world is
-        a vast and diverse place, filled with an array of cultures, languages,
-        and landscapes. From bustling city streets to serene countryside vistas,
-        each corner of the globe offers its own unique charm and beauty. People
-        from all walks of life come together to create a rich tapestry of
-        experiences and stories. Whether exploring ancient ruins, savoring
-        exotic cuisines, or simply enjoying the company of loved ones, there's
-        always something new and exciting to discover. As we navigate the
-        complexities of modern life, it's important to embrace the wonder and
-        curiosity that surrounds us, making each moment truly special."Sure,
-        here's a bunch of text containing approximationly 50 words: "The world
-      </p>
+      <h2 className="offscreen">Cart</h2>
+      <ul className="cart">
+        {cart.map((item) => {
+          return (
+            <CartLineItem
+              key={item.itemNumber}
+              item={item}
+              dispatch={dispatch}
+              REDUCER_ACTIONS={REDUCER_ACTIONS}
+            />
+          );
+        })}
+      </ul>
+      <div className="cart__totals">
+        <p>Total Items: {totalItems}</p>
+        <p>Total Price: {totalPrice}</p>
+        <button
+          className="cart__submit"
+          disabled={!totalItems}
+          onClick={onSubmitOrder}
+        >
+          Place Order
+        </button>
+      </div>
     </>
   );
-}
-export default Cart
+
+  const content = <main className="main main--cart">{pageContent}</main>;
+
+  return content;
+};
+export default Cart;
